@@ -2,7 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { sendUserInfos } from '../redux/actions/index';
+import ButtonSettings from '../components/ButtonSettings';
 import fetchTriviaToken from '../services/fetchTriviaToken';
+
 
 class Login extends React.Component {
   state = {
@@ -32,9 +34,13 @@ class Login extends React.Component {
 
   render() {
     const { name, email } = this.state;
+    const { history } = this.props;
 
     return (
       <div>
+        <ButtonSettings
+          history={ history }
+        />
         <form>
           <input
             type="text"
