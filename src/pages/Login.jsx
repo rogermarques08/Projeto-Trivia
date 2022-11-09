@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { sendUserInfos } from '../redux/actions/index';
+import ButtonSettings from '../components/ButtonSettings';
 
 class Login extends React.Component {
   state = {
@@ -28,9 +29,13 @@ class Login extends React.Component {
 
   render() {
     const { name, email } = this.state;
+    const { history } = this.props;
 
     return (
       <div>
+        <ButtonSettings
+          history={ history }
+        />
         <form>
           <input
             type="text"
@@ -64,6 +69,7 @@ class Login extends React.Component {
 
 Login.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape().isRequired,
 };
 
 export default connect()(Login);

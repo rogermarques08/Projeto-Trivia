@@ -5,6 +5,7 @@ import Game from './pages/Game';
 import Ranking from './pages/Ranking';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
+import Settings from './pages/Settings';
 
 export default class Routes extends Component {
   render() {
@@ -15,6 +16,7 @@ export default class Routes extends Component {
           <Route path="/game" component={ Game } />
           <Route exact path="/feedback" component={ Feedback } />
           <Route path="/ranking" component={ Ranking } />
+          <Route path="/settings" component={ Settings } />
           <Route path="*" component={ NotFound } />
         </Switch>
       </BrowserRouter>
