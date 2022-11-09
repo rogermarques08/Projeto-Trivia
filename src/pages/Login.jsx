@@ -3,6 +3,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { sendUserInfos } from '../redux/actions/index';
 import ButtonSettings from '../components/ButtonSettings';
+import fetchTriviaToken from '../services/fetchTriviaToken';
+
 
 class Login extends React.Component {
   state = {
@@ -22,9 +24,12 @@ class Login extends React.Component {
     return name.length > 0 && email.length > 0;
   };
 
-  handleClick = () => {
-    const { dispatch } = this.props;
+  handleClick = async () => {
+    const { dispatch, history } = this.props;
     dispatch(sendUserInfos(this.state));
+    const token = await fetchTriviaToken();
+    localStorage.setItem('token', token);
+    history.push('/game');
   };
 
   render() {
