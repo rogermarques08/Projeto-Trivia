@@ -5,7 +5,6 @@ import { sendUserInfos } from '../redux/actions/index';
 import ButtonSettings from '../components/ButtonSettings';
 import fetchTriviaToken from '../services/fetchTriviaToken';
 
-
 class Login extends React.Component {
   state = {
     name: '',
