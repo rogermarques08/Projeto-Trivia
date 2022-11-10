@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class Feedback extends React.Component {
   render() {
     return (
-      <p>Feedback</p>
+      <p datatest-id="feedback-text">Feedback</p>
     );
   }
 }
