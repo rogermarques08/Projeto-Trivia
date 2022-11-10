@@ -54,6 +54,7 @@ class Question extends Component {
                       data-testid="correct-answer"
                       style={ { border: showAnswers && '3px solid rgb(6, 240, 15)' } }
                       onClick={ this.toggleShowAnswers }
+                      key={ e }
                     >
                       {questions[index].correct_answer}
                     </button>)
@@ -81,11 +82,12 @@ class Question extends Component {
 }
 
 Question.propTypes = {
-  questions: PropTypes.shape({
+  questions: PropTypes.arrayOf(PropTypes.shape({
     question: PropTypes.string.isRequired,
     incorrect_answers: PropTypes.arrayOf(PropTypes.string).isRequired,
     correct_answer: PropTypes.string.isRequired,
-  }).isRequired,
+    category: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 export default Question;
