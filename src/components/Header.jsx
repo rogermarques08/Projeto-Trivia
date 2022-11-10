@@ -1,6 +1,6 @@
+import md5 from 'crypto-js/md5';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import md5 from 'crypto-js/md5';
 import { connect } from 'react-redux';
 
 class Header extends Component {
@@ -20,8 +20,7 @@ class Header extends Component {
           alt={ player.name }
         />
         <p data-testid="header-player-name">{player.name}</p>
-        <p data-testid="header-score">0</p>
-
+        <p data-testid="header-score">{player.score}</p>
       </header>
     );
   }
@@ -29,8 +28,9 @@ class Header extends Component {
 
 Header.propTypes = {
   player: PropTypes.shape({
-    name: PropTypes.string.isRequired,
     gravatarEmail: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    score: PropTypes.number.isRequired,
   }).isRequired,
 };
 

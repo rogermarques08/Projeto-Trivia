@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import { Component } from 'react';
+import { connect } from 'react-redux';
+import { playerScore } from '../redux/actions';
 
 class Question extends Component {
   state = {
@@ -8,12 +10,46 @@ class Question extends Component {
     showAnswers: false,
     timer: 0,
     timeLeft: 30,
+    correctAnswer: '',
   };
 
   componentDidMount() {
     this.randomizeQuestions();
     this.cronometro();
   }
+
+  difficultLevel = () => {
+    const { index } = this.state;
+    const { questions } = this.props;
+    const answers = questions[index];
+    const { difficulty } = answers;
+
+    const hard = 3;
+    const medium = 2;
+    const easy = 1;
+
+    switch (difficulty) {
+    case 'hard':
+      return hard;
+    case 'medium':
+      return medium;
+    case 'easy':
+      return easy;
+    default:
+      break;
+    }
+  };
+
+  calculeteScore = (target) => {
+    const { timeLeft, correctAnswer } = this.state;
+    const { dispatch } = this.props;
+    const initialScore = 10;
+
+    if (target === correctAnswer) {
+      const sum = initialScore + ((timeLeft - 1) * this.difficultLevel());
+      dispatch(playerScore(sum));
+    }
+  };
 
   cronometro = () => {
     this.setState({ timeLeft: 30 }, () => {
@@ -48,13 +84,14 @@ class Question extends Component {
 
     this.setState({
       allQuestions: allQsort,
+      correctAnswer: questions[index].correct_answer,
     });
   };
 
-  toggleShowAnswers = () => {
+  toggleShowAnswers = ({ target }) => {
     this.setState((prev) => ({
       showAnswers: !prev.showAnswers,
-    }));
+    }), () => this.calculeteScore(target.innerText));
   };
 
   render() {
@@ -113,12 +150,14 @@ class Question extends Component {
 }
 
 Question.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   questions: PropTypes.arrayOf(PropTypes.shape({
     question: PropTypes.string.isRequired,
     incorrect_answers: PropTypes.arrayOf(PropTypes.string).isRequired,
     correct_answer: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
+    difficulty: PropTypes.string.isRequired,
   })).isRequired,
 };
 
-export default Question;
+export default connect()(Question);

@@ -1,4 +1,4 @@
-import { SEND_USER_INFOS } from '../actions/index';
+import { PLAYER_SCORE, SEND_USER_INFOS } from '../actions/index';
 
 const INITIAL_STATE = {
   name: '',
@@ -14,6 +14,11 @@ const playerReducer = (state = INITIAL_STATE, action) => {
       ...state,
       name: action.payload.name,
       gravatarEmail: action.payload.email,
+    };
+  case PLAYER_SCORE:
+    return {
+      ...state,
+      score: action.payload,
     };
   default:
     return state;
