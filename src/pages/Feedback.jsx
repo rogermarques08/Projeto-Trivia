@@ -2,11 +2,33 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
+import { resetGlobalState } from '../redux/actions';
 
 class Feedback extends React.Component {
+  componentDidMount() {
+    this.savePlayerScore();
+  }
+
+  savePlayerScore = () => {
+    const { player } = this.props;
+    const playerScore = {
+      name: player.name,
+      score: player.score,
+      picture: player.src,
+    };
+    const ranking = JSON.parse(localStorage.getItem('ranking'));
+    if (!ranking) {
+      localStorage.setItem('ranking', JSON.stringify([playerScore]));
+    } else {
+      const newRank = [...ranking, playerScore];
+      localStorage.setItem('ranking', JSON.stringify(newRank));
+    }
+  };
+
   playAgain = () => {
-    const { history } = this.props;
+    const { history, dispatch } = this.props;
     localStorage.removeItem('token');
+    dispatch(resetGlobalState());
     history.push('/');
   };
 

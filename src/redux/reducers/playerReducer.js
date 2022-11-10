@@ -1,10 +1,11 @@
-import { PLAYER_SCORE, SEND_USER_INFOS, PLAYER_ASSERTIONS } from '../actions/index';
+import { GET_PLAYER_IMAGE, PLAYER_ASSERTIONS, PLAYER_SCORE, RESET_GLOBAL_STATE, SEND_USER_INFOS } from '../actions/index';
 
 const INITIAL_STATE = {
   name: '',
   assertions: 0,
   score: 0,
   gravatarEmail: '',
+  src: '',
 };
 
 const playerReducer = (state = INITIAL_STATE, action) => {
@@ -24,6 +25,19 @@ const playerReducer = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       assertions: state.assertions + action.payload,
+    };
+  case RESET_GLOBAL_STATE:
+    return {
+      name: '',
+      assertions: 0,
+      score: 0,
+      gravatarEmail: '',
+      src: '',
+    };
+  case GET_PLAYER_IMAGE:
+    return {
+      ...state,
+      src: action.payload,
     };
   default:
     return state;
