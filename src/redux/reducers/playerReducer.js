@@ -3,7 +3,7 @@ import {
   PLAYER_ASSERTIONS,
   PLAYER_SCORE,
   RESET_GLOBAL_STATE,
-  SEND_USER_INFOS
+  SEND_USER_INFOS,
 } from '../actions/index';
 
 const INITIAL_STATE = {
