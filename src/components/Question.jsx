@@ -6,11 +6,33 @@ class Question extends Component {
     index: 0,
     allQuestions: [],
     showAnswers: false,
+    timer: 0,
+    timeLeft: 30,
   };
 
   componentDidMount() {
     this.randomizeQuestions();
+    this.cronometro();
   }
+
+  cronometro = () => {
+    this.setState({ timeLeft: 30 }, () => {
+      const second = 1000;
+      const idInterval = setInterval(() => {
+        this.setState((prevState) => ({
+          timeLeft: prevState.timeLeft - 1,
+        }), () => {
+          const { timeLeft, showAnswers } = this.state;
+          if (timeLeft === 0 || showAnswers) {
+            clearInterval(idInterval);
+            this.setState({
+              timer: timeLeft,
+            });
+          }
+        });
+      }, second);
+    });
+  };
 
   randomizeQuestions = () => {
     const { questions } = this.props;
@@ -37,12 +59,19 @@ class Question extends Component {
 
   render() {
     const { questions } = this.props;
-    const { index, allQuestions, showAnswers } = this.state;
+    const { index, allQuestions, showAnswers, timeLeft, timer } = this.state;
+    console.log(timer);
 
     return (
       <div>
         <h2 data-testid="question-text">{questions[index].question}</h2>
         <h3 data-testid="question-category">{questions[index].category}</h3>
+        <p>
+          {' '}
+          TimeLeft:
+          {' '}
+          { timeLeft }
+        </p>
         <div data-testid="answer-options">
           {
             allQuestions.map((e, i) => {
@@ -55,6 +84,7 @@ class Question extends Component {
                       style={ { border: showAnswers && '3px solid rgb(6, 240, 15)' } }
                       onClick={ this.toggleShowAnswers }
                       key={ e }
+                      disabled={ showAnswers || timeLeft === 0 }
                     >
                       {questions[index].correct_answer}
                     </button>)
@@ -68,6 +98,7 @@ class Question extends Component {
                     key={ e }
                     style={ { border: showAnswers && '3px solid red' } }
                     onClick={ this.toggleShowAnswers }
+                    disabled={ showAnswers || timeLeft === 0 }
                   >
                     {e}
                   </button>
