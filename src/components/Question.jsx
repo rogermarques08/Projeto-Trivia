@@ -57,6 +57,16 @@ class Question extends Component {
     }));
   };
 
+  changeIndex = () => {
+    this.setState((prev) => ({
+      index: prev.index + 1,
+      showAnswers: false,
+    }), () => {
+      this.cronometro();
+      this.randomizeQuestions();
+    });
+  };
+
   render() {
     const { questions } = this.props;
     const { index, allQuestions, showAnswers, timeLeft, timer } = this.state;
@@ -105,6 +115,19 @@ class Question extends Component {
                 )
               );
             })
+          }
+        </div>
+        <div>
+          {
+            showAnswers && (
+              <button
+                type="button"
+                data-testid="btn-next"
+                onClick={ this.changeIndex }
+              >
+                Next
+
+              </button>)
           }
         </div>
       </div>
