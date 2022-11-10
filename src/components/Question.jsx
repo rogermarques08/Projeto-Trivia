@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { playerScore } from '../redux/actions';
+import { playerScore, playerAssertions } from '../redux/actions';
 
 class Question extends Component {
   state = {
@@ -39,14 +39,16 @@ class Question extends Component {
     }
   };
 
-  calculeteScore = (target) => {
+  calculateScore = (target) => {
     const { timeLeft, correctAnswer } = this.state;
     const { dispatch } = this.props;
     const initialScore = 10;
 
     if (target === correctAnswer) {
       const sum = initialScore + ((timeLeft - 1) * this.difficultLevel());
+      const assertionPoint = 1;
       dispatch(playerScore(sum));
+      dispatch(playerAssertions(assertionPoint));
     }
   };
 
@@ -87,7 +89,7 @@ class Question extends Component {
   toggleShowAnswers = ({ target }) => {
     this.setState((prev) => ({
       showAnswers: !prev.showAnswers,
-    }), () => this.calculeteScore(target.innerText));
+    }), () => this.calculateScore(target.innerText));
   };
 
   changeIndex = () => {
