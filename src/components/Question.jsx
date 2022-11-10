@@ -95,6 +95,14 @@ class Question extends Component {
   };
 
   changeIndex = () => {
+    const { history } = this.props;
+
+    const MAX_INDEX = 4;
+
+    if (index === MAX_INDEX) {
+      history.push('/feedback');
+    }
+
     this.setState((prev) => ({
       index: prev.index + 1,
       showAnswers: false,
@@ -174,6 +182,7 @@ class Question extends Component {
 
 Question.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape().isRequired,
   questions: PropTypes.arrayOf(PropTypes.shape({
     question: PropTypes.string.isRequired,
     incorrect_answers: PropTypes.arrayOf(PropTypes.string).isRequired,
