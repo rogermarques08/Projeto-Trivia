@@ -70,10 +70,15 @@ class Feedback extends React.Component {
 }
 
 Feedback.propTypes = {
-  history: PropTypes.shape().isRequired,
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
   player: PropTypes.shape({
     assertions: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
     score: PropTypes.number.isRequired,
+    src: PropTypes.string.isRequired,
   }).isRequired,
 };
 

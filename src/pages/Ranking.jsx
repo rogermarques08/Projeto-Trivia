@@ -39,7 +39,10 @@ class Ranking extends React.Component {
 }
 
 Ranking.propTypes = {
-  history: PropTypes.shape().isRequired,
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
 };
 
 export default connect()(Ranking);

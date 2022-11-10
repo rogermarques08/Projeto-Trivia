@@ -1,4 +1,10 @@
-import { GET_PLAYER_IMAGE, PLAYER_ASSERTIONS, PLAYER_SCORE, RESET_GLOBAL_STATE, SEND_USER_INFOS } from '../actions/index';
+import {
+  GET_PLAYER_IMAGE,
+  PLAYER_ASSERTIONS,
+  PLAYER_SCORE,
+  RESET_GLOBAL_STATE,
+  SEND_USER_INFOS
+} from '../actions/index';
 
 const INITIAL_STATE = {
   name: '',
