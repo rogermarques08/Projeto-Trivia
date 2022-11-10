@@ -31,13 +31,14 @@ class Game extends React.Component {
 
   render() {
     const { questions } = this.state;
+    const { history } = this.props;
     return (
       <div>
         <h1>game</h1>
         <Header />
 
         {
-          questions.length > 0 && <Question questions={ questions } />
+          questions.length > 0 && <Question questions={ questions } history={ history } />
         }
 
       </div>

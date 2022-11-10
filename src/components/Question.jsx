@@ -8,7 +8,6 @@ class Question extends Component {
     index: 0,
     allQuestions: [],
     showAnswers: false,
-    timer: 0,
     timeLeft: 30,
     correctAnswer: '',
   };
@@ -61,9 +60,6 @@ class Question extends Component {
           const { timeLeft, showAnswers } = this.state;
           if (timeLeft === 0 || showAnswers) {
             clearInterval(idInterval);
-            this.setState({
-              timer: timeLeft,
-            });
           }
         });
       }, second);
@@ -95,6 +91,14 @@ class Question extends Component {
   };
 
   changeIndex = () => {
+    const { history } = this.props;
+    const { index } = this.state;
+    const MAX_INDEX = 4;
+
+    if (index === MAX_INDEX) {
+      history.push('/feedback');
+    }
+
     this.setState((prev) => ({
       index: prev.index + 1,
       showAnswers: false,
@@ -106,8 +110,7 @@ class Question extends Component {
 
   render() {
     const { questions } = this.props;
-    const { index, allQuestions, showAnswers, timeLeft, timer } = this.state;
-    console.log(timer);
+    const { index, allQuestions, showAnswers, timeLeft } = this.state;
 
     return (
       <div>
@@ -174,6 +177,7 @@ class Question extends Component {
 
 Question.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape().isRequired,
   questions: PropTypes.arrayOf(PropTypes.shape({
     question: PropTypes.string.isRequired,
     incorrect_answers: PropTypes.arrayOf(PropTypes.string).isRequired,
