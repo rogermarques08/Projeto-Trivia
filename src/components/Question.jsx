@@ -113,7 +113,7 @@ class Question extends Component {
 
     return (
       <div>
-        <h2 data-testid="question-text">{questions[index].question}</h2>
+        <h2 data-testid="question-text">{questions[index].question.replace(/&#039;/gi, '\'').replace(/&quot;/gi, '"')}</h2>
         <h3 data-testid="question-category">{questions[index].category}</h3>
         <p>
           {' '}
