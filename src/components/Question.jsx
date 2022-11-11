@@ -27,16 +27,12 @@ class Question extends Component {
     const medium = 2;
     const easy = 1;
 
-    switch (difficulty) {
-    case 'hard':
+    if (difficulty === 'hard') {
       return hard;
-    case 'medium':
+    } if (difficulty === 'medium') {
       return medium;
-    case 'easy':
-      return easy;
-    default:
-      break;
     }
+    return easy;
   };
 
   calculateScore = (target) => {
