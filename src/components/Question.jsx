@@ -26,7 +26,7 @@ class Question extends Component {
     const hard = 3;
     const medium = 2;
     const easy = 1;
-    // substituição do switch pelo if
+    // substituição do switch pelo if!
     if (difficulty === 'hard') {
       return hard;
     } if (difficulty === 'medium') {
@@ -58,6 +58,7 @@ class Question extends Component {
           const { timeLeft, showAnswers } = this.state;
           if (timeLeft === 0 || showAnswers) {
             clearInterval(idInterval);
+            this.setState({ showAnswers: true });
           }
         });
       }, second);
@@ -69,7 +70,7 @@ class Question extends Component {
     const { index } = this.state;
     const allQ = [questions[index].correct_answer, ...questions[index].incorrect_answers];
     const allQsort = allQ.sort((a, b) => a.length - b.length);
-    // stackoverflow > buscar monitoria para entender melhor!
+    // stackoverflow > buscar monitoria para entender melhor!!
     for (let start = 0; start < allQ.length; start += 1) {
       const randomPosition = Math.floor((allQ.length - start) * Math.random());
       const randomItem = allQ.splice(randomPosition, 1);
