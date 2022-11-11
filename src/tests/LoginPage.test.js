@@ -20,6 +20,10 @@ it('Testa se campos input/botão estão na tela', () =>{
     expect(buttonPlay).toBeInTheDocument();
     const buttonSettings = screen.getByRole('button', {name:/settings/i})
     expect(buttonSettings).toBeInTheDocument();
+    userEvent.click(buttonSettings);
+    screen.getByRole('heading', {
+        name: /configurações/i
+      })
 });
 it('testa comportamento do botão play', () =>{
     renderWithRouterAndRedux(<App />);
