@@ -58,6 +58,7 @@ class Question extends Component {
           const { timeLeft, showAnswers } = this.state;
           if (timeLeft === 0 || showAnswers) {
             clearInterval(idInterval);
+            this.setState({ showAnswers: true });
           }
         });
       }, second);
