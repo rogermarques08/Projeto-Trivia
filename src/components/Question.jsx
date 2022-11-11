@@ -89,7 +89,7 @@ class Question extends Component {
   toggleShowAnswers = ({ target }) => {
     this.setState((prev) => ({
       showAnswers: !prev.showAnswers,
-    }), () => this.calculateScore(target.innerText));
+    }), () => this.calculateScore(target.value));
   };
 
   changeIndex = () => {
@@ -136,6 +136,7 @@ class Question extends Component {
                       style={ { border: showAnswers && '3px solid rgb(6, 240, 15)' } }
                       onClick={ this.toggleShowAnswers }
                       key={ e }
+                      value={ e }
                       disabled={ showAnswers || timeLeft === 0 }
                     >
                       {questions[index].correct_answer}
@@ -148,6 +149,7 @@ class Question extends Component {
                     data-testid={ `wrong-answer-${i}` }
                     type="button"
                     key={ e }
+                    value={ e }
                     style={ { border: showAnswers && '3px solid red' } }
                     onClick={ this.toggleShowAnswers }
                     disabled={ showAnswers || timeLeft === 0 }
