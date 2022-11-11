@@ -26,7 +26,7 @@ class Question extends Component {
     const hard = 3;
     const medium = 2;
     const easy = 1;
-    // substituição do switch pelo if
+    // substituição do switch pelo if!
     if (difficulty === 'hard') {
       return hard;
     } if (difficulty === 'medium') {
