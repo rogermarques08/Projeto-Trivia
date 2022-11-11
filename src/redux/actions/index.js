@@ -27,3 +27,23 @@ export const getPlayerImage = (src) => ({
   type: GET_PLAYER_IMAGE,
   payload: src,
 });
+
+// settings categories;
+
+export const SELECTED_CATEGORY = 'SELECTED_CATEGORY';
+export const selectedCategory = (payload) => ({
+  type: SELECTED_CATEGORY,
+  payload,
+});
+
+export const SELECTED_DIFFICULTY = 'SELECTED_DIFFICULTY';
+export const selectedDifficulty = (payload) => ({
+  type: SELECTED_DIFFICULTY,
+  payload,
+});
+
+export const SELECTED_TYPE = 'SELECTED_TYPE';
+export const selectedType = (payload) => ({
+  type: SELECTED_TYPE,
+  payload,
+});
