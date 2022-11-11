@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import { sendUserInfos } from '../redux/actions/index';
 import ButtonSettings from '../components/ButtonSettings';
+import { sendUserInfos } from '../redux/actions/index';
 import fetchTriviaToken from '../services/fetchTriviaToken';
 
 class Login extends React.Component {
@@ -27,7 +27,7 @@ class Login extends React.Component {
     const { dispatch, history } = this.props;
     dispatch(sendUserInfos(this.state));
     const token = await fetchTriviaToken();
-    // o setItem não pode receber stringify pois já é uma string
+    // o setItem não pode receber stringify pois já é uma string!
     localStorage.setItem('token', token);
     history.push('/game');
   };
