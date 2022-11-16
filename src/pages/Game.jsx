@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Header from '../components/Header';
 import fetchTriviaQuestions from '../services/fetchTriviaQuestions';
 import Question from '../components/Question';
+import * as S from './styles/Game.style';
 
 class Game extends React.Component {
   state = {
@@ -58,14 +59,14 @@ class Game extends React.Component {
     const { questions } = this.state;
     const { history } = this.props;
     return (
-      <div>
+      <S.gameContainer>
         <Header history={ history } />
 
         {
           questions.length > 0 && <Question questions={ questions } history={ history } />
         }
 
-      </div>
+      </S.gameContainer>
     );
   }
 }

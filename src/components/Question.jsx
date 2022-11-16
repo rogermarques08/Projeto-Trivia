@@ -1,7 +1,9 @@
+/* eslint-disable max-len */
 import PropTypes from 'prop-types';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { playerAssertions, playerScore } from '../redux/actions';
+import * as S from './styles/Question.style';
 
 class Question extends Component {
   state = {
@@ -112,69 +114,77 @@ class Question extends Component {
     const { index, allQuestions, showAnswers, timeLeft } = this.state;
 
     return (
-      <div>
-        <h2 data-testid="question-text">{questions[index].question.replace(/&#039;/gi, '\'').replace(/&quot;/gi, '"')}</h2>
-        <h3 data-testid="question-category">{questions[index].category}</h3>
-        <h3>
-          {questions[index].difficulty}
-        </h3>
-        <p>
-          {' '}
-          TimeLeft:
-          {' '}
-          { timeLeft }
-        </p>
-        <div data-testid="answer-options">
-          {
-            allQuestions.map((e, i) => {
-              if (e === questions[index].correct_answer) {
+      <S.questionContainer>
+        <S.questionInfos>
+          <S.questionCategoryContainer>
+            <S.questionCategory data-testid="question-category">{questions[index].category}</S.questionCategory>
+          </S.questionCategoryContainer>
+          <S.difficultyLevel>
+            {questions[index].difficulty}
+          </S.difficultyLevel>
+          <S.questionText data-testid="question-text">{questions[index].question.replace(/&#039;/gi, '\'').replace(/&quot;/gi, '"')}</S.questionText>
+          <S.timer>
+            <span className="material-icons">
+              timer
+            </span>
+            {' '}
+            TimeLeft:
+            {' '}
+            { timeLeft }
+          </S.timer>
+        </S.questionInfos>
+        <S.answersButtonContainer>
+          <S.answersOptions data-testid="answer-options">
+            {
+              allQuestions.map((e, i) => {
+                if (e === questions[index].correct_answer) {
+                  return (
+                    (
+                      <S.answer
+                        type="button"
+                        data-testid="correct-answer"
+                        style={ { border: showAnswers && '3px solid rgb(6, 240, 15)' } }
+                        onClick={ this.toggleShowAnswers }
+                        key={ e }
+                        value={ e }
+                        disabled={ showAnswers || timeLeft === 0 }
+                      >
+                        {questions[index].correct_answer}
+                      </S.answer>)
+                  );
+                }
                 return (
                   (
-                    <button
+                    <S.answer
+                      data-testid={ `wrong-answer-${i}` }
                       type="button"
-                      data-testid="correct-answer"
-                      style={ { border: showAnswers && '3px solid rgb(6, 240, 15)' } }
-                      onClick={ this.toggleShowAnswers }
                       key={ e }
                       value={ e }
+                      style={ { border: showAnswers && '3px solid red' } }
+                      onClick={ this.toggleShowAnswers }
                       disabled={ showAnswers || timeLeft === 0 }
                     >
-                      {questions[index].correct_answer}
-                    </button>)
+                      {e}
+                    </S.answer>
+                  )
                 );
-              }
-              return (
-                (
-                  <button
-                    data-testid={ `wrong-answer-${i}` }
-                    type="button"
-                    key={ e }
-                    value={ e }
-                    style={ { border: showAnswers && '3px solid red' } }
-                    onClick={ this.toggleShowAnswers }
-                    disabled={ showAnswers || timeLeft === 0 }
-                  >
-                    {e}
-                  </button>
-                )
-              );
-            })
-          }
-        </div>
-        <div>
-          {
-            showAnswers && (
-              <button
-                type="button"
-                data-testid="btn-next"
-                onClick={ this.changeIndex }
-              >
-                Next
-
-              </button>)
-          }
-        </div>
-      </div>
+              })
+            }
+          </S.answersOptions>
+          <S.buttonNextContainer>
+            {
+              showAnswers && (
+                <S.buttonNext
+                  type="button"
+                  data-testid="btn-next"
+                  onClick={ this.changeIndex }
+                >
+                  Next
+                </S.buttonNext>)
+            }
+          </S.buttonNextContainer>
+        </S.answersButtonContainer>
+      </S.questionContainer>
     );
   }
 }
