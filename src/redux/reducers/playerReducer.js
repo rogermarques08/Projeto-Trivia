@@ -4,6 +4,9 @@ import {
   PLAYER_SCORE,
   RESET_GLOBAL_STATE,
   SEND_USER_INFOS,
+  SELECTED_CATEGORY,
+  SELECTED_DIFFICULTY,
+  SELECTED_TYPE,
 } from '../actions/index';
 
 const INITIAL_STATE = {
@@ -12,6 +15,9 @@ const INITIAL_STATE = {
   score: 0,
   gravatarEmail: '',
   src: '',
+  selectedCategory: 0,
+  selectedDifficulty: '',
+  selectedType: '',
 };
 
 const playerReducer = (state = INITIAL_STATE, action) => {
@@ -44,6 +50,21 @@ const playerReducer = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       src: action.payload,
+    };
+  case SELECTED_CATEGORY:
+    return {
+      ...state,
+      selectedCategory: action.payload,
+    };
+  case SELECTED_DIFFICULTY:
+    return {
+      ...state,
+      selectedDifficulty: action.payload,
+    };
+  case SELECTED_TYPE:
+    return {
+      ...state,
+      selectedType: action.payload,
     };
   default:
     return state;

@@ -115,6 +115,9 @@ class Question extends Component {
       <div>
         <h2 data-testid="question-text">{questions[index].question.replace(/&#039;/gi, '\'').replace(/&quot;/gi, '"')}</h2>
         <h3 data-testid="question-category">{questions[index].category}</h3>
+        <h3>
+          {questions[index].difficulty}
+        </h3>
         <p>
           {' '}
           TimeLeft:
@@ -178,7 +181,9 @@ class Question extends Component {
 
 Question.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  history: PropTypes.shape().isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
   questions: PropTypes.arrayOf(PropTypes.shape({
     question: PropTypes.string.isRequired,
     incorrect_answers: PropTypes.arrayOf(PropTypes.string).isRequired,
