@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import Header from '../components/Header';
+import logo from '../assets/images/logotrivia.svg';
 import { resetGlobalState } from '../redux/actions';
+import * as S from './styles/Feedback.style';
 
 class Feedback extends React.Component {
   componentDidMount() {
@@ -33,38 +34,70 @@ class Feedback extends React.Component {
   };
 
   render() {
-    const { player: { assertions, score }, history } = this.props;
+    const { player: { assertions, score, src }, history } = this.props;
     const ASSERTIONS = 3;
     return (
-      <div>
-        <Header />
-        <h1>Feedback</h1>
-        <h2 data-testid="feedback-total-score">{score}</h2>
-        <h2 data-testid="feedback-total-question">{assertions}</h2>
-        {
-          assertions < ASSERTIONS
-            ? <h1 data-testid="feedback-text">Could be better...</h1>
-            : <h1 data-testid="feedback-text">Well Done!</h1>
-        }
-        <div>
-          <button
+      <S.feedBackPage>
+        <S.logo src={ logo } alt="logo" />
+        <S.userImage
+          src={ src }
+          alt="user"
+          style={ assertions < ASSERTIONS ? { border: '4px solid #EA5D5D',
+            filter: 'drop-shadow(0px 0px 9px #EA5D5D)' } : { border: '4px solid #2FC18C',
+            filter: 'drop-shadow(0px 0px 9px #2FC18C)' } }
+        />
+        <S.feedBackContainer>
+          <S.infos>
+            {
+              assertions < ASSERTIONS
+                ? (
+                  <h1
+                    data-testid="feedback-text"
+                    style={ { color: 'rgba(234, 93, 93, 1)' } }
+                  >
+                    PODIA SER MELHOR...
+                  </h1>)
+                : (
+                  <h1
+                    data-testid="feedback-text"
+                    style={ { color: '#2FC18C;' } }
+                  >
+                    MUITO BEM!
+                  </h1>)
+            }
+            <p data-testid="feedback-total-score">
+              Você acertou
+              {' '}
+              {assertions}
+              {' '}
+              questões!
+            </p>
+            <p data-testid="feedback-total-question">
+              Um total de
+              {' '}
+              {score}
+              {' '}
+              pontos.
+            </p>
+          </S.infos>
+        </S.feedBackContainer>
+        <S.buttonsContainer>
+          <S.playAgainBtn
             type="button"
             data-testid="btn-play-again"
             onClick={ this.playAgain }
           >
-            Play Again
-
-          </button>
-          <button
+            JOGAR NOVAMENTE
+          </S.playAgainBtn>
+          <S.rankingBtn
             type="button"
             data-testid="btn-ranking"
             onClick={ () => history.push('/ranking') }
           >
-            Ranking
-
-          </button>
-        </div>
-      </div>
+            VER RANKING
+          </S.rankingBtn>
+        </S.buttonsContainer>
+      </S.feedBackPage>
     );
   }
 }
