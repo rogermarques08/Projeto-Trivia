@@ -41,7 +41,7 @@ width: 100%;
 align-items: center;
 justify-content: center;
 align-content: center;
-
+margin-right: 43px;
 `;
 export const rowRanking = styled.li`
 display: flex;
@@ -94,8 +94,8 @@ export const points = styled.div`
 width: 184px;
 height: 55px;
 background: #FFFFFF;
-
-display: flex;
+position: relative;
+display:flex;
 flex-direction: row;
 height: 51px;
 box-shadow: 0px 4px 10px;
