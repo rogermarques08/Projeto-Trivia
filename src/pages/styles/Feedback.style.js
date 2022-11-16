@@ -19,7 +19,8 @@ margin-top: 120px;
 
 export const infos = styled.div`
 margin-top: 130px;
-color: #B5B5B5;
+color: gray;
+font-weight: 700;
 `;
 
 export const userImage = styled.img`
@@ -50,6 +51,7 @@ background: #00D5E2;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 5px;
 color: white;
+font-weight: 700;
 border:none;
 :hover {
     cursor: pointer;
@@ -64,6 +66,7 @@ background: #2FC18C;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 5px;
 color: white;
+font-weight: 700;
 border:none;
 :hover {
     cursor: pointer;

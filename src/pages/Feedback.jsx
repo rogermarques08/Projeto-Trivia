@@ -60,7 +60,7 @@ class Feedback extends React.Component {
                 : (
                   <h1
                     data-testid="feedback-text"
-                    style={ { color: '#2FC18C;' } }
+                    style={ { color: '#2FC18C' } }
                   >
                     MUITO BEM!
                   </h1>)

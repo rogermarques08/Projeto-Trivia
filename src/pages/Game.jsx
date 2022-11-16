@@ -59,8 +59,7 @@ class Game extends React.Component {
     const { history } = this.props;
     return (
       <div>
-        <h1>game</h1>
-        <Header />
+        <Header history={ history } />
 
         {
           questions.length > 0 && <Question questions={ questions } history={ history } />
