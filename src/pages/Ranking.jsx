@@ -1,7 +1,11 @@
+/* eslint-disable react/jsx-key */
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { resetGlobalState } from '../redux/actions';
+import * as S from './styles/Ranking.style';
+import vector from '../assets/images/Vector.png'
+import logo from '../assets/images/logotrivia.svg'
 
 class Ranking extends React.Component {
   playAgain = () => {
@@ -15,25 +19,35 @@ class Ranking extends React.Component {
     const rankingList = JSON.parse(localStorage.getItem('ranking'))
       .sort((a, b) => b.score - a.score);
     return (
-      <div>
-        <h1 data-testid="ranking-title">Ranking</h1>
-        <ol>
+      <S.containerAll>
+        <S.logoTrivia src={ logo } alt="" />
+        <S.containerRanking>
+          <S.titleRanking data-testid="ranking-title">Ranking</S.titleRanking>
           {rankingList.map((e, i) => (
-            <li key={ e.picture }>
-              <p data-testid={ `player-name-${i}` }>{e.name}</p>
-              <p data-testid={ `player-score-${i}` }>{e.score}</p>
-              <img src={ e.picture } alt="user" />
-            </li>
+            <S.ulRanking>
+              <S.rowRanking key={e.picture}>
+                <S.nameAndImage>
+                  <S.personalImagem src={e.picture} alt="user" />
+                  <S.personalName data-testid={`player-name-${i}`}>{e.name}</S.personalName>
+                </S.nameAndImage>
+                <S.points>
+                  <S.starImage src= { vector } alt='' />
+                <S.personalScore data-testid={`player-score-${i}`}>{e.score}</S.personalScore>
+                </S.points>
+
+              </S.rowRanking>
+            </S.ulRanking>
           ))}
-        </ol>
-        <button
-          type="button"
-          data-testid="btn-go-home"
-          onClick={ this.playAgain }
-        >
-          Play Again
-        </button>
-      </div>
+
+          <S.buttonPlay
+            type="button"
+            data-testid="btn-go-home"
+            onClick={this.playAgain}
+          >
+            Play Again
+          </S.buttonPlay>
+        </S.containerRanking>
+      </S.containerAll>
     );
   }
 }
