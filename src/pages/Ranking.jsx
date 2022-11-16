@@ -4,8 +4,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { resetGlobalState } from '../redux/actions';
 import * as S from './styles/Ranking.style';
-import vector from '../assets/images/Vector.png'
-import logo from '../assets/images/logotrivia.svg'
+import vector from '../assets/images/Vector.png';
+import logo from '../assets/images/logotrivia.svg';
 
 class Ranking extends React.Component {
   playAgain = () => {
@@ -25,14 +25,18 @@ class Ranking extends React.Component {
           <S.titleRanking data-testid="ranking-title">Ranking</S.titleRanking>
           {rankingList.map((e, i) => (
             <S.ulRanking>
-              <S.rowRanking key={e.picture}>
+              <S.rowRanking key={ e.picture }>
                 <S.nameAndImage>
-                  <S.personalImagem src={e.picture} alt="user" />
-                  <S.personalName data-testid={`player-name-${i}`}>{e.name}</S.personalName>
+                  <S.personalImagem src={ e.picture } alt="user" />
+                  <S.personalName data-testid={ `player-name-${i}` }>
+                    {e.name}
+                  </S.personalName>
                 </S.nameAndImage>
                 <S.points>
-                  <S.starImage src= { vector } alt='' />
-                <S.personalScore data-testid={`player-score-${i}`}>{e.score}</S.personalScore>
+                  <S.starImage src={ vector } alt="" />
+                  <S.personalScore data-testid={ `player-score-${i}` }>
+                    {e.score}
+                  </S.personalScore>
                 </S.points>
 
               </S.rowRanking>
@@ -42,7 +46,7 @@ class Ranking extends React.Component {
           <S.buttonPlay
             type="button"
             data-testid="btn-go-home"
-            onClick={this.playAgain}
+            onClick={ this.playAgain }
           >
             Play Again
           </S.buttonPlay>

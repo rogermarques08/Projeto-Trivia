@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const containerAll = styled.div`
 height: 100vh;
@@ -8,13 +8,12 @@ align-items: center;
 justify-content: center;
 `;
 
-
 export const logoTrivia = styled.img`
 position: relative;
 margin-top: 180px;
 width: 177.79px;
 height: 178.76px;
-`
+`;
 export const containerRanking = styled.div`
 width: 489px;
 height:auto;
@@ -43,7 +42,7 @@ align-items: center;
 justify-content: center;
 align-content: center;
 
-`
+`;
 export const rowRanking = styled.li`
 display: flex;
 width: 386px;
@@ -89,7 +88,7 @@ font-weight: 400;
 font-size: 16px;
 line-height: 150%;
 margin-left: 15px;
-`
+`;
 
 export const points = styled.div`
 width: 184px;
@@ -115,4 +114,4 @@ font-weight: 700;
 font-size: 16px;
 line-height: 150%;
 margin-left: 15px;
-`
+`;
