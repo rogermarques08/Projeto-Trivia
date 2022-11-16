@@ -5,6 +5,7 @@ import { sendUserInfos } from '../redux/actions/index';
 import ButtonSettings from '../components/ButtonSettings';
 import fetchTriviaToken from '../services/fetchTriviaToken';
 import * as S from './styles/Login.style';
+import logo from '../assets/images/logotrivia.svg';
 
 class Login extends React.Component {
   state = {
@@ -39,11 +40,9 @@ class Login extends React.Component {
 
     return (
       <S.loginStyle>
-        <ButtonSettings
-          history={ history }
-        />
-        <form>
-          <input
+        <img src={ logo } alt="" />
+        <S.formContainer>
+          <S.formInputs
             type="text"
             placeholder="Nome"
             data-testid="input-player-name"
@@ -51,7 +50,7 @@ class Login extends React.Component {
             name="name"
             onChange={ this.handleInputChange }
           />
-          <input
+          <S.formInputs
             type="text"
             placeholder="Email"
             data-testid="input-gravatar-email"
@@ -67,7 +66,12 @@ class Login extends React.Component {
           >
             Play
           </S.loginBtn>
-        </form>
+        </S.formContainer>
+
+        <ButtonSettings
+          history={ history }
+        />
+
       </S.loginStyle>
     );
   }
