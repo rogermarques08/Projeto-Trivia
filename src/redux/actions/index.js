@@ -4,10 +4,13 @@ export const PLAYER_ASSERTIONS = 'PLAYERS_ASSERTIONS';
 export const RESET_GLOBAL_STATE = 'RESET_GLOBAL_STATE';
 export const GET_PLAYER_IMAGE = 'GET_PLAYER_IMAGE';
 
+// userActions
 export const sendUserInfos = (payload) => ({
   type: SEND_USER_INFOS,
   payload,
 });
+
+// gameActions
 
 export const playerScore = (score) => ({
   type: PLAYER_SCORE,
