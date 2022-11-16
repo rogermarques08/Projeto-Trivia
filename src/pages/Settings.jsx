@@ -1,9 +1,12 @@
+/* eslint-disable max-len */
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import fetchTriviaCategorys from '../services/fetchTriviaCategorys';
 import CategoryOptions from '../components/CategoryOptions';
 import { selectedCategory, selectedDifficulty, selectedType } from '../redux/actions';
+import logo from '../assets/images/logotrivia.svg';
+import * as S from './styles/Settings.style';
 
 class Settings extends React.Component {
   state = {
@@ -43,28 +46,29 @@ class Settings extends React.Component {
   render() {
     const { categories } = this.state;
     return (
-      <div>
-        <h1>Configurações</h1>
-        <select name="categorySelected" onChange={ this.handleChange } id="">
-          <option value="0">All</option>
-          {
-            categories.map((e) => <CategoryOptions key={ e.id } option={ e } />)
-          }
-        </select>
-
-        <select name="difficultySelected" id="" onChange={ this.handleChange }>
-          <option value="">Todas</option>
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-        </select>
-
-        <select name="typeSelected" onChange={ this.handleChange }>
-          <option value="multiple">Multiple</option>
-          <option value="boolean">True or False</option>
-        </select>
-        <button type="button" onClick={ this.dispatchOptions }>Aplicar</button>
-      </div>
+      <S.settingsContainer>
+        <S.settingsInfosContainer>
+          <S.logo src={ logo } alt="" />
+          <S.title>Configurações</S.title>
+          <S.selects name="categorySelected" onChange={ this.handleChange } id="">
+            <option value="0">All</option>
+            {
+              categories.map((e) => <CategoryOptions key={ e.id } option={ e } />)
+            }
+          </S.selects>
+          <S.selects name="difficultySelected" id="" onChange={ this.handleChange }>
+            <option value="">Todas</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </S.selects>
+          <S.selects name="typeSelected" onChange={ this.handleChange }>
+            <option value="multiple">Multiple</option>
+            <option value="boolean">True or False</option>
+          </S.selects>
+          <S.apllyButton type="button" onClick={ this.dispatchOptions }>Aplicar</S.apllyButton>
+        </S.settingsInfosContainer>
+      </S.settingsContainer>
     );
   }
 }
