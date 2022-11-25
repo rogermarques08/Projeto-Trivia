@@ -6,6 +6,10 @@ flex-wrap: wrap;
 justify-content: center;
 align-items: center;
 gap: 50px;
+@media (max-width: 768px) {
+    position: relative;
+    top: -180px;
+  }
 `;
 
 export const questionInfos = styled.div`
@@ -19,7 +23,9 @@ text-align: center;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
-
+@media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 export const questionCategoryContainer = styled.div`
@@ -33,6 +39,10 @@ display: flex;
 align-items: center;
 justify-content: center;
 border-radius: 100px;
+@media (max-width: 768px) {
+    width: 100%;
+    left: 0;
+  }
 
 `;
 
@@ -58,6 +68,10 @@ export const answersButtonContainer = styled.div`
 height: 400px;
 display: flex;
 flex-direction: column;
+@media (max-width: 768px) {
+    position: relative;
+    top: -40px;
+  }
 
 `;
 
@@ -67,6 +81,9 @@ display: flex;
 flex-direction: column;
 justify-content: space-evenly;
 height: 87%;
+@media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const buttonNextContainer = styled.div`
@@ -96,6 +113,9 @@ background: #FFFFFF;
 border-radius: 100px;
 font-weight: 400;
 font-family: 'Epilogue';
+@media (max-width: 768px) {
+    width: 300px;
+  }
 `;
 
 export const buttonNext = styled.button`
@@ -111,5 +131,8 @@ font-weight: 700;
     cursor: pointer;
     border: 1px solid black;
 }
+@media (max-width: 768px) {
+    width: 300px;
+  }
 
 `;

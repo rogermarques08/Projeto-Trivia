@@ -4,6 +4,13 @@ export const feedBackPage = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
+@media (max-width: 768px) {
+    position: relative;
+    top: 50px;
+  }
+  @media (max-width: 375px) {
+    top:0
+  }
 `;
 
 export const feedBackContainer = styled.div`
@@ -15,12 +22,19 @@ box-shadow: 1px 4px 13px 2px rgba(0, 0, 0, 0.2);
 border-radius: 10px;
 text-align: center;
 margin-top: 120px;
+@media (max-width: 768px) {
+    width: 90%;
+  } 
 `;
 
 export const infos = styled.div`
 margin-top: 130px;
 color: gray;
 font-weight: 700;
+@media (max-width: 375px) {
+    position: relative;
+    top: -50px;
+} 
 `;
 
 export const userImage = styled.img`
@@ -42,6 +56,10 @@ width:439px;
 display: flex;
 margin-top: 10px;
 justify-content: space-between;
+@media (max-width: 768px) {
+    width: 90%;
+    gap: 20px;
+  }
 `;
 
 export const rankingBtn = styled.button`

@@ -13,6 +13,15 @@ position: relative;
 margin-top: 180px;
 width: 177.79px;
 height: 178.76px;
+@media (max-width: 768px) {
+    top: -130px;
+  }
+  
+  @media (max-width: 375px) {
+    top: -75px;
+    z-index: 1;
+  } 
+
 `;
 export const containerRanking = styled.div`
 width: 489px;
@@ -25,6 +34,17 @@ margin-top: -80px;
 margin-bottom: 30px;
 padding-bottom: 30px;
 border-radius: 10px;
+@media (max-width: 768px) {
+    width: 90%;
+    position: relative;
+    top: -40px;
+  } 
+
+  @media (max-width: 375px) {
+    top: -30px;
+    z-index: 0;
+    
+  } 
 `;
 
 export const titleRanking = styled.h1`
@@ -33,10 +53,15 @@ font-weight: 700;
 font-size: 30px;
 line-height: 150%;
 margin-top: 100px;
+@media (max-width: 768px) {
+    margin-top: 20px;
+  } 
 `;
 
 export const ulRanking = styled.ul`
 display: flex;
+flex-direction: column;
+gap: 20px;
 width: 100%;
 align-items: center;
 justify-content: center;
@@ -48,6 +73,9 @@ display: flex;
 width: 386px;
 flex-direction: row;
 justify-content: space-between;
+@media (max-width: 768px) {
+    width: 90%;
+  } 
 `;
 
 export const buttonPlay = styled.button`
@@ -64,6 +92,9 @@ font-weight: 700;
     cursor: pointer;
     border: 1px solid black;
 }
+@media (max-width: 768px) {
+    width: 90%;
+  } 
 `;
 
 export const nameAndImage = styled.div`

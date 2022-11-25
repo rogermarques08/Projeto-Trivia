@@ -14,7 +14,7 @@ export default class CategoryOptions extends Component {
 
 CategoryOptions.propTypes = {
   option: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired,
 };

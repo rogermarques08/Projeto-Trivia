@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
 export const headerContainer = styled.header`
-border: 1px solid red;
 display: flex;
 height: 113px;
 background-color: white;
 justify-content: space-around;
 align-items: center;
+@media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const logo = styled.img`
@@ -14,6 +16,9 @@ width: 197.09px;
 height: 198.18px;
 position: relative;
 top: 55px;
+@media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const userPicture = styled.img`

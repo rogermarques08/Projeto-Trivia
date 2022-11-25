@@ -6,5 +6,4 @@ display: flex;
 flex-direction: column;
 gap: 270px;
 height: 100vh;
-
 `;

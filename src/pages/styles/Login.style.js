@@ -6,6 +6,9 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
+@media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const loginBtn = styled.button`
@@ -27,6 +30,10 @@ font-weight: 700;
     cursor: auto;
 }
 
+@media (max-width: 768px) {
+    width: 300px;
+  }
+
 `;
 
 export const formContainer = styled.form`
@@ -40,6 +47,10 @@ flex-direction: column;
 align-items: center;
 justify-content: space-around;
 padding-top: 20px;
+
+@media (max-width: 768px) {
+    width: 400px;
+  }
 `;
 
 export const formInputs = styled.input`
@@ -53,4 +64,7 @@ text-align: center;
     padding-left: 5px;
     text-align: center;
 }
+@media (max-width: 768px) {
+    width: 300px;
+  }
 `;

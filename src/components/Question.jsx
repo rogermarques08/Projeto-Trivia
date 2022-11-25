@@ -143,7 +143,11 @@ class Question extends Component {
                       <S.answer
                         type="button"
                         data-testid="correct-answer"
-                        style={ { border: showAnswers && '3px solid rgb(6, 240, 15)' } }
+                        style={ {
+                          border: showAnswers && '3px solid rgb(6, 240, 15)',
+                          backgroundColor: showAnswers && 'green',
+                          fontWeight: showAnswers && '700',
+                          color: showAnswers && 'white' } }
                         onClick={ this.toggleShowAnswers }
                         key={ e }
                         value={ e }
@@ -160,7 +164,11 @@ class Question extends Component {
                       type="button"
                       key={ e }
                       value={ e }
-                      style={ { border: showAnswers && '3px solid red' } }
+                      style={ {
+                        border: showAnswers && '3px solid red',
+                        backgroundColor: showAnswers && 'red',
+                        fontWeight: showAnswers && '700',
+                        color: showAnswers && 'white' } }
                       onClick={ this.toggleShowAnswers }
                       disabled={ showAnswers || timeLeft === 0 }
                     >

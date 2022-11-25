@@ -23,9 +23,9 @@ class Ranking extends React.Component {
         <S.logoTrivia src={ logo } alt="" />
         <S.containerRanking>
           <S.titleRanking data-testid="ranking-title">Ranking</S.titleRanking>
-          {rankingList.map((e, i) => (
-            <S.ulRanking>
-              <S.rowRanking key={ e.picture }>
+          <S.ulRanking>
+            {rankingList.map((e, i) => (
+              <S.rowRanking key={ i }>
                 <S.nameAndImage>
                   <S.personalImagem src={ e.picture } alt="user" />
                   <S.personalName data-testid={ `player-name-${i}` }>
@@ -40,8 +40,8 @@ class Ranking extends React.Component {
                 </S.points>
 
               </S.rowRanking>
-            </S.ulRanking>
-          ))}
+            ))}
+          </S.ulRanking>
 
           <S.buttonPlay
             type="button"
